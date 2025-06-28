@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1e86vpbpebcg"]
+
+[ext_resource type="Script" uid="uid://c5cbhlmq4okp0" path="res://bullet/bullet.gd" id="1_6wip1"]
+[ext_resource type="Texture2D" uid="uid://vqnr6nj2q6cf" path="res://asset/tama.png" id="2_0qjqd"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_6wip1")
+
+[node name="bullet" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_0qjqd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

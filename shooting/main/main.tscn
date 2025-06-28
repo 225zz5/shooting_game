@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3dnpyd72jfq6"]
+[gd_scene load_steps=5 format=3 uid="uid://d3dnpyd72jfq6"]
 
-[ext_resource type="PackedScene" uid="uid://bc538x2qtk13f" path="res://main/player.tscn" id="1_37jte"]
+[ext_resource type="PackedScene" uid="uid://mtjelje7sbfq" path="res://background/background.tscn" id="1_pjrb6"]
+[ext_resource type="PackedScene" uid="uid://bc538x2qtk13f" path="res://player/player.tscn" id="2_xwkvk"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_37jte"]
 a = Vector2(565, -319.5)
@@ -12,8 +13,11 @@ b = Vector2(554.628, 335.947)
 
 [node name="main" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_37jte")]
-position = Vector2(528, 601)
+[node name="background" parent="." instance=ExtResource("1_pjrb6")]
+position = Vector2(1, -2)
+
+[node name="player" parent="." instance=ExtResource("2_xwkvk")]
+position = Vector2(586, 602)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
