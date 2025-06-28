@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bssrj4mm6j68m"]
+
+[ext_resource type="Script" uid="uid://kslqk38isxjb" path="res://hp/hp.gd" id="1_rnpu1"]
+[ext_resource type="Texture2D" uid="uid://lhcjjk37c5ka" path="res://asset/Frame_hp.png" id="2_3ndlx"]
+[ext_resource type="Texture2D" uid="uid://ccop27n2j0c55" path="res://asset/hp.png" id="3_n27cb"]
+
+[sub_resource type="FontFile" id="FontFile_rnpu1"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_3ndlx"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(6, 6)
+script = ExtResource("1_rnpu1")
+
+[node name="player_hp" type="TextureProgressBar" parent="."]
+offset_left = -0.833333
+offset_top = 72.1667
+offset_right = 63.1667
+offset_bottom = 136.167
+texture_over = ExtResource("3_n27cb")
+texture_progress = ExtResource("2_3ndlx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 27.6667
+offset_top = 72.1667
+offset_right = 61.6667
+offset_bottom = 95.1667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_rnpu1")
+text = "/100"
+
+[node name="Label_hp" type="Label" parent="."]
+offset_left = -14.1667
+offset_top = 72.3333
+offset_right = 25.8333
+offset_bottom = 95.3333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_3ndlx")
+text = "100"
+horizontal_alignment = 2

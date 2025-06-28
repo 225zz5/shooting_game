@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3dnpyd72jfq6"]
+[gd_scene load_steps=7 format=3 uid="uid://d3dnpyd72jfq6"]
 
+[ext_resource type="PackedScene" uid="uid://bssrj4mm6j68m" path="res://hp/hp.tscn" id="1_c651c"]
 [ext_resource type="PackedScene" uid="uid://mtjelje7sbfq" path="res://background/background.tscn" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://bc538x2qtk13f" path="res://player/player.tscn" id="2_c651c"]
 [ext_resource type="PackedScene" uid="uid://bk1krcg65nvim" path="res://enemy/enemy.tscn" id="3_3wy1v"]
@@ -13,6 +14,9 @@ a = Vector2(558.194, -307.044)
 b = Vector2(554.628, 335.947)
 
 [node name="main" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_c651c")]
+position = Vector2(-2, 8)
 
 [node name="player" parent="." instance=ExtResource("2_c651c")]
 position = Vector2(586, 602)

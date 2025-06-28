@@ -37,3 +37,15 @@ func bullet():
 	var bullet = BULLET_SCENE.instantiate()
 	bullet.global_position = global_position + Vector2(0, -20)
 	get_tree().current_scene.add_child(bullet)
+	
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullet_enemy_onshot") or area.is_in_group("bullet_enemy"):
+		damege()
+		area.queue_free()
+
+
+func damege():
+	const  HP_DAMEAG: Array[float] = [1,2,3,4,5,6,7,8,9,10] # 受けるダメージ
+	var hp_damege :int = HP_DAMEAG.pick_random()
+	global.hp -= hp_damege
+	

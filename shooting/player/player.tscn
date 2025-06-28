@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc538x2qtk13f"]
+[gd_scene load_steps=5 format=3 uid="uid://bc538x2qtk13f"]
 
 [ext_resource type="Script" uid="uid://dj6c5gbxnmd7d" path="res://player/player.gd" id="1_7mixf"]
 [ext_resource type="Texture2D" uid="uid://cvn2bchm443al" path="res://asset/zero.png" id="2_nevrd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(92, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
+size = Vector2(93, 90)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_7mixf")
@@ -20,4 +23,11 @@ shape = SubResource("RectangleShape2D_rkbax")
 [node name="Timer_shot" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_g1dw6")
+
 [connection signal="timeout" from="Timer_shot" to="." method="_on_timer_shot_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
