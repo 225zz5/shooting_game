@@ -85,3 +85,15 @@ func onshot():
 	var direction = (player.global_position - bullet2.global_position).normalized()
 	bullet2.direction = direction
 	get_tree().current_scene.add_child(bullet2)
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullet_player"):
+		print("グループ化")
+		damege()
+		area.get_parent().queue_free() 
+
+
+func damege():
+	const  HP_DAMEAG: Array[float] = [1,2,3,4,5,6,7,8,9,10] # 受けるダメージ
+	var hp_damege :int = HP_DAMEAG.pick_random()
+	global.enemy_hp -= hp_damege

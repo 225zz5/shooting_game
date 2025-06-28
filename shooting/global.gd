@@ -1,2 +1,3 @@
 extends Node
-var hp :int = 100
+var player_hp :int = 100
+var enemy_hp :int = 100

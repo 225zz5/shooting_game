@@ -16,7 +16,10 @@ b = Vector2(554.628, 335.947)
 [node name="main" type="Node2D"]
 
 [node name="Node2D" parent="." instance=ExtResource("1_c651c")]
-position = Vector2(-2, 8)
+offset_left = -2.0
+offset_top = 8.0
+offset_right = -2.0
+offset_bottom = 8.0
 
 [node name="player" parent="." instance=ExtResource("2_c651c")]
 position = Vector2(586, 602)

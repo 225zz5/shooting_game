@@ -9,7 +9,7 @@ radius = 27.8568
 [sub_resource type="CircleShape2D" id="CircleShape2D_ijdx1"]
 radius = 30.2655
 
-[node name="CharacterBody2D" type="Area2D"]
+[node name="Area2D" type="Area2D"]
 script = ExtResource("1_jpyru")
 
 [node name="enemy_bullet" type="Sprite2D" parent="."]
@@ -40,4 +40,5 @@ shape = SubResource("CircleShape2D_ijdx1")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

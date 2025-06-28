@@ -47,5 +47,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func damege():
 	const  HP_DAMEAG: Array[float] = [1,2,3,4,5,6,7,8,9,10] # 受けるダメージ
 	var hp_damege :int = HP_DAMEAG.pick_random()
-	global.hp -= hp_damege
+	global.player_hp -= hp_damege
 	

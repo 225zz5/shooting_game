@@ -11,6 +11,6 @@ func _physics_process(delta):
 func _ready():
 	$Timer.start()
 	add_to_group("bullet_player")
-
+	$Area2D.add_to_group("bullet_player")
 func _on_timer_timeout() -> void:
 	queue_free()

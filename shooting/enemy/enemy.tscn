@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bk1krcg65nvim"]
+[gd_scene load_steps=38 format=3 uid="uid://bk1krcg65nvim"]
 
 [ext_resource type="Texture2D" uid="uid://bhry7lt55y5ay" path="res://asset/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="1_2mvqj"]
 [ext_resource type="Script" uid="uid://bbnqyqa5ycvsd" path="res://enemy/enemy.gd" id="1_ofsxj"]
@@ -252,6 +252,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ofsxj"]
+radius = 65.0077
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ofsxj")
 
@@ -272,8 +275,16 @@ wait_time = 10.0
 wait_time = 0.5
 one_shot = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 81)
+shape = SubResource("CircleShape2D_ofsxj")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="Timer_speed" to="." method="_on_timer_speed_timeout"]
 [connection signal="timeout" from="Timer_attack" to="." method="_on_timer_attack_timeout"]
 [connection signal="timeout" from="Timer_onshot" to="." method="_on_timer_onshot_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
