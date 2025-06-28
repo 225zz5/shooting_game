@@ -18,6 +18,7 @@ const BULLET_SCENE :PackedScene = preload("res://bullet_enemy/bullet_enemy.tscn"
 const BULLET_SCENE2 :PackedScene = preload("res://bullet/bullet_enemy_onshot.tscn")
 
 func _ready() -> void:
+	add_to_group("enemy")
 	sprite.flip_h = not sprite.flip_h
 	$AnimatedSprite2D.play("run")
 	start_position = position.x   #  初期位置を保存
@@ -53,7 +54,6 @@ func _on_timer_attack_timeout() -> void:
 	$Timer_attack.stop()
 
 
-	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	print("アニメ終わり")
 	#	attackするときは止まるように　

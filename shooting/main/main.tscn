@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3dnpyd72jfq6"]
+[gd_scene load_steps=8 format=3 uid="uid://d3dnpyd72jfq6"]
 
 [ext_resource type="PackedScene" uid="uid://bssrj4mm6j68m" path="res://hp/hp.tscn" id="1_c651c"]
 [ext_resource type="PackedScene" uid="uid://mtjelje7sbfq" path="res://background/background.tscn" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://bc538x2qtk13f" path="res://player/player.tscn" id="2_c651c"]
 [ext_resource type="PackedScene" uid="uid://bk1krcg65nvim" path="res://enemy/enemy.tscn" id="3_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://cn8eqom4bfd6j" path="res://explosion/explosion.tscn" id="5_3wy1v"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_37jte"]
 a = Vector2(565, -319.5)
@@ -40,3 +41,5 @@ shape = SubResource("SegmentShape2D_hf4mc")
 
 [node name="enemy" parent="." instance=ExtResource("3_3wy1v")]
 position = Vector2(560, 60)
+
+[node name="exposion" parent="." instance=ExtResource("5_3wy1v")]
