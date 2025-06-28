@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-const SPEED :int = 300
+const SPEED :float = 300.0
 const BULLET_SCENE :PackedScene = preload("res://bullet/bullet.tscn")
 @onready var time_shot :Timer = $Timer_shot
+@onready var time_onshot :Timer = $Timer_onshot
 
 #playerの座標管理
 func _physics_process(delta):
@@ -15,7 +16,6 @@ func _physics_process(delta):
 	#playerを実際に動かす処理
 	velocity = input_velocity * SPEED
 	move_and_slide()
-	
 
 	#0.5秒おきに弾が出る処理
 	if Input.is_action_pressed("shot"):
@@ -30,6 +30,6 @@ func _on_timer_shot_timeout():
 	
 #弾の処理
 func bullet():
-			var bullet = BULLET_SCENE.instantiate()
-			bullet.global_position = global_position + Vector2(0, -20)
-			get_tree().current_scene.add_child(bullet)
+	var bullet = BULLET_SCENE.instantiate()
+	bullet.global_position = global_position + Vector2(0, -20)
+	get_tree().current_scene.add_child(bullet)
