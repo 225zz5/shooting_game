@@ -11,6 +11,7 @@ var move_range: float = 480.0 #往復する距離
 var start_position: float = 0.0
 var direction: int = 1 #向きを決める
 var attackmotion: int = 9
+var hitmotion: bool = false
 const  SPEED_LIST: Array[float] = [150,160,170,180,190,200,210,220,230,240,250] # 速度パターン
 const  ATTACK_LIST: Array[float] = [5,10,7] #攻撃間隔
 const BULLET_SCENE :PackedScene = preload("res://bullet_enemy/bullet_enemy.tscn")
@@ -55,6 +56,7 @@ func _on_timer_attack_timeout() -> void:
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	print("アニメ終わり")
+	#	attackするときは止まるように　
 	if $AnimatedSprite2D.animation == "attack":
 		print("attack終わり")
 		$AnimatedSprite2D.play("run")
@@ -63,6 +65,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		var attack_list: float = ATTACK_LIST.pick_random()
 		$Timer_attack.wait_time = attack_list
 		$Timer_attack.start()
+		#ヒットモーション終わったらの処理
+	if $AnimatedSprite2D.animation == "hit":
+		$Timer_attack.start()
+		$AnimatedSprite2D.play("run")
 
 
 func shoot():
@@ -96,4 +102,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func damege():
 	const  HP_DAMEAG: Array[float] = [1,2,3,4,5,6,7,8,9,10] # 受けるダメージ
 	var hp_damege :int = HP_DAMEAG.pick_random()
+	var hit_hp50 :int = 50
 	global.enemy_hp -= hp_damege
+	#hpが50より下になったらヒットモーション
+	if global.enemy_hp <= hit_hp50 and hitmotion == false:
+		$AnimatedSprite2D.play("hit")
+		$Timer_attack.stop()
+		hitmotion = true

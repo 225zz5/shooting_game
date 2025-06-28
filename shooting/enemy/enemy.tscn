@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bk1krcg65nvim"]
+[gd_scene load_steps=43 format=3 uid="uid://bk1krcg65nvim"]
 
 [ext_resource type="Texture2D" uid="uid://bhry7lt55y5ay" path="res://asset/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="1_2mvqj"]
 [ext_resource type="Script" uid="uid://bbnqyqa5ycvsd" path="res://enemy/enemy.gd" id="1_ofsxj"]
@@ -62,6 +62,26 @@ region = Rect2(3744, 320, 288, 160)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bxjs"]
 atlas = ExtResource("1_2mvqj")
 region = Rect2(4032, 320, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70x6l"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(0, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k585h"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(288, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyqw8"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(576, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ont7t"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(864, 480, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3n84"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(1152, 480, 288, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppra6"]
 atlas = ExtResource("1_2mvqj")
@@ -194,6 +214,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_70x6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k585h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyqw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ont7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3n84")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ppra6")
 }, {
 "duration": 1.0,
@@ -261,9 +301,7 @@ script = ExtResource("1_ofsxj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ofsxj")
-animation = &"attack"
-frame = 10
-frame_progress = 0.694314
+animation = &"hit"
 
 [node name="Timer_speed" type="Timer" parent="."]
 wait_time = 3.0
