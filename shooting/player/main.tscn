@@ -14,6 +14,7 @@ b = Vector2(554.628, 335.947)
 [node name="main" type="Node2D"]
 
 [node name="background" parent="." instance=ExtResource("1_pjrb6")]
+z_index = -1
 position = Vector2(1, -2)
 
 [node name="player" parent="." instance=ExtResource("2_xwkvk")]
