@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3dnpyd72jfq6"]
 
-[ext_resource type="PackedScene" uid="uid://mtjelje7sbfq" path="res://background/background.tscn" id="1_pjrb6"]
-[ext_resource type="PackedScene" uid="uid://bc538x2qtk13f" path="res://player/player.tscn" id="2_xwkvk"]
-[ext_resource type="PackedScene" uid="uid://bk1krcg65nvim" path="res://enemy/enemy.tscn" id="3_rxskw"]
+[ext_resource type="PackedScene" uid="uid://mtjelje7sbfq" path="res://background/background.tscn" id="1_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://bc538x2qtk13f" path="res://player/player.tscn" id="2_c651c"]
+[ext_resource type="PackedScene" uid="uid://bk1krcg65nvim" path="res://enemy/enemy.tscn" id="3_3wy1v"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_37jte"]
 a = Vector2(565, -319.5)
@@ -14,11 +14,11 @@ b = Vector2(554.628, 335.947)
 
 [node name="main" type="Node2D"]
 
-[node name="background" parent="." instance=ExtResource("1_pjrb6")]
-z_index = -1
-
-[node name="player" parent="." instance=ExtResource("2_xwkvk")]
+[node name="player" parent="." instance=ExtResource("2_c651c")]
 position = Vector2(586, 602)
+
+[node name="background" parent="." instance=ExtResource("1_xwkvk")]
+z_index = -1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -31,5 +31,5 @@ position = Vector2(558, 335)
 rotation = 3.13449
 shape = SubResource("SegmentShape2D_hf4mc")
 
-[node name="enemy" parent="." instance=ExtResource("3_rxskw")]
+[node name="enemy" parent="." instance=ExtResource("3_3wy1v")]
 position = Vector2(560, 60)

@@ -5,6 +5,11 @@ const BULLET_SCENE :PackedScene = preload("res://bullet/bullet.tscn")
 @onready var time_shot :Timer = $Timer_shot
 @onready var time_onshot :Timer = $Timer_onshot
 
+func _ready():
+	add_to_group("player")
+
+
+
 #playerの座標管理
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
