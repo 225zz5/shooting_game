@@ -3,7 +3,6 @@ extends CharacterBody2D
 const SPEED :float = 300.0
 const BULLET_SCENE :PackedScene = preload("res://bullet/bullet.tscn")
 @onready var time_shot :Timer = $Timer_shot
-@onready var time_onshot :Timer = $Timer_onshot
 
 func _ready():
 	add_to_group("player")

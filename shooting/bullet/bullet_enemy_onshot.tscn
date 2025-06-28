@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu7nk5a73mse5"]
+
+[ext_resource type="Script" uid="uid://djy41jxy6107g" path="res://bullet/bullet_enemy_onshot.gd" id="1_1ob1h"]
+[ext_resource type="Texture2D" uid="uid://qaajld7y7h5a" path="res://asset/enemy_tama.png" id="2_a71ik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gte5o"]
+radius = 13.0384
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_1ob1h")
+
+[node name="EnemyTama" type="Sprite2D" parent="."]
+texture = ExtResource("2_a71ik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gte5o")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

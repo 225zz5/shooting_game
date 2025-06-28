@@ -20,8 +20,4 @@ shape = SubResource("RectangleShape2D_rkbax")
 [node name="Timer_shot" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Timer_onshot" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="timeout" from="Timer_shot" to="." method="_on_timer_shot_timeout"]
-[connection signal="timeout" from="Timer_onshot" to="." method="_on_timer_onshot_timeout"]

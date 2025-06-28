@@ -1,8 +1,11 @@
 extends Node2D
+
 @onready var timer_speed: Timer = $Timer_speed
 @onready var timer_attack: Timer = $Timer_attack
+@onready var time_onshot :Timer = $Timer_onshot
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
+
 var speed: float = 200.0
 var move_range: float = 480.0 #往復する距離
 var start_position: float = 0.0
@@ -11,6 +14,7 @@ var attackmotion: int = 9
 const  SPEED_LIST: Array[float] = [150,160,170,180,190,200,210,220,230,240,250] # 速度パターン
 const  ATTACK_LIST: Array[float] = [5,10,7] #攻撃間隔
 const BULLET_SCENE :PackedScene = preload("res://bullet_enemy/bullet_enemy.tscn")
+const BULLET_SCENE2 :PackedScene = preload("res://bullet/bullet_enemy_onshot.tscn")
 
 func _ready() -> void:
 	sprite.flip_h = not sprite.flip_h
@@ -18,6 +22,7 @@ func _ready() -> void:
 	start_position = position.x   #  初期位置を保存
 	$Timer_speed.start()
 	$Timer_attack.start()
+	$Timer_onshot.start()
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.frame == attackmotion:
@@ -26,7 +31,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 
 func _process(delta: float) -> void:
-
 	
 	# 移動処理
 	position.x += speed * direction * delta
@@ -69,5 +73,15 @@ func shoot():
 	var direction = (player.global_position - bullet.global_position).normalized()
 	bullet.direction = direction
 	get_tree().current_scene.add_child(bullet)
-	
-	
+
+func _on_timer_onshot_timeout() -> void:
+	onshot()
+
+func onshot():
+	$Timer_onshot.start()
+	var bullet2 = BULLET_SCENE2.instantiate()
+	bullet2.global_position = global_position + Vector2(0, 30)
+	# 撃った瞬間のplayer座標を取得して方向計算
+	var direction = (player.global_position - bullet2.global_position).normalized()
+	bullet2.direction = direction
+	get_tree().current_scene.add_child(bullet2)
