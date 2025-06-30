@@ -16,6 +16,10 @@ b = Vector2(554.628, 335.947)
 
 [node name="main" type="Node2D"]
 
+[node name="exposion" parent="." instance=ExtResource("5_3wy1v")]
+z_index = 1
+position = Vector2(124, -63)
+
 [node name="Node2D" parent="." instance=ExtResource("1_c651c")]
 offset_left = -2.0
 offset_top = 8.0
@@ -41,6 +45,3 @@ position = Vector2(586, 602)
 
 [node name="enemy" parent="." instance=ExtResource("3_3wy1v")]
 position = Vector2(560, 60)
-
-[node name="exposion" parent="." instance=ExtResource("5_3wy1v")]
-z_index = -1
