@@ -6,21 +6,29 @@ extends Node
 const MIN_EXPLOSION: Vector2 = Vector2(0, 0)
 const MIN_HP: int = 0
 var judgment: bool = false
-
-
+var explosion_target: Node2D = null	# 追尾対象
+var is_exploding: bool = false
 
 func _ready() -> void:
 	explosion_enemy.scale = MIN_EXPLOSION
 	explosion_player.scale = MIN_EXPLOSION
 	explosion_enemy.visible = false
 	explosion_player.visible = false
-	#ほかのシーンを止めてもこのシーンだけは動くように
-	explosion_enemy.process_mode = Node2D.PROCESS_MODE_ALWAYS
-	explosion_player.process_mode = Node2D.PROCESS_MODE_ALWAYS
+	explosion_enemy.process_mode = Node.PROCESS_MODE_ALWAYS
+	explosion_player.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(delta: float) -> void:
+	# 爆発中の追尾処理
+	if is_exploding and explosion_target != null:
+		if explosion_enemy.visible:
+			explosion_enemy.global_position = explosion_target.global_position
+		elif explosion_player.visible:
+			explosion_player.global_position = explosion_target.global_position
+
 	# 敵が死んだ場合
 	if global.enemy_hp <= MIN_HP and not judgment:
+		explosion_target = enemy	# 追尾対象設定
+		is_exploding = true
 		explosion_enemy.global_position = enemy.global_position
 		explosion_enemy.visible = true
 		var tween = create_tween()
@@ -30,6 +38,8 @@ func _process(delta: float) -> void:
 
 	# プレイヤーが死んだ場合
 	if global.player_hp <= MIN_HP and not judgment:
+		explosion_target = player	# 追尾対象設定
+		is_exploding = true
 		explosion_player.global_position = player.global_position
 		explosion_player.visible = true
 		var tween = create_tween()
@@ -38,4 +48,5 @@ func _process(delta: float) -> void:
 		judgment = true
 
 func _on_explosion_finished():
+	is_exploding = false	# 追尾停止
 	get_tree().paused = true

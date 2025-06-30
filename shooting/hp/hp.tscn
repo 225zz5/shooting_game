@@ -1,89 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://bssrj4mm6j68m"]
+[gd_scene load_steps=5 format=3 uid="uid://bssrj4mm6j68m"]
 
 [ext_resource type="Script" uid="uid://kslqk38isxjb" path="res://hp/hp.gd" id="1_rnpu1"]
 [ext_resource type="Texture2D" uid="uid://lhcjjk37c5ka" path="res://asset/Frame_hp.png" id="2_3ndlx"]
 [ext_resource type="Texture2D" uid="uid://ccop27n2j0c55" path="res://asset/hp.png" id="3_n27cb"]
-
-[sub_resource type="FontFile" id="FontFile_rnpu1"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="FontFile" id="FontFile_3ndlx"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[ext_resource type="FontFile" uid="uid://dpnx60ksmqggt" path="res://asset/Nosutaru-dotMPlusH-10-Regular.ttf" id="4_3ndlx"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(6, 6)
 script = ExtResource("1_rnpu1")
 
 [node name="player_hp_bar" type="TextureProgressBar" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = -0.833333
-offset_top = 72.1667
-offset_right = 63.1667
-offset_bottom = 136.167
+offset_left = -12.0
+offset_top = 399.0
+offset_right = 52.0
+offset_bottom = 463.0
+scale = Vector2(7, 7)
 texture_over = ExtResource("3_n27cb")
 texture_progress = ExtResource("2_3ndlx")
 
 [node name="player" type="Label" parent="."]
 layout_mode = 0
-offset_left = 27.6667
-offset_top = 72.1667
-offset_right = 61.6667
-offset_bottom = 95.1667
+offset_left = 167.667
+offset_top = 471.0
+offset_right = 367.667
+offset_bottom = 582.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontFile_rnpu1")
+theme_override_fonts/font = ExtResource("4_3ndlx")
+theme_override_font_sizes/font_size = 100
 text = "/100"
 
 [node name="player_hp_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -14.1667
-offset_top = 72.3333
-offset_right = 25.8333
-offset_bottom = 95.3333
+offset_left = 4.0
+offset_top = 470.0
+offset_right = 154.0
+offset_bottom = 581.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontFile_3ndlx")
+theme_override_fonts/font = ExtResource("4_3ndlx")
+theme_override_font_sizes/font_size = 100
 text = "100"
 horizontal_alignment = 2
 
 [node name="enemy_hp_bar" type="TextureProgressBar" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 125.5
-offset_top = -7.16667
-offset_right = 189.5
-offset_bottom = 56.8333
+offset_left = 703.0
+offset_top = -79.0
+offset_right = 767.0
+offset_bottom = -15.0
+scale = Vector2(7, 7)
 texture_over = ExtResource("3_n27cb")
 texture_progress = ExtResource("2_3ndlx")
 
 [node name="enemy" type="Label" parent="."]
 layout_mode = 0
-offset_left = 155.833
-offset_top = -3.0
-offset_right = 195.833
-offset_bottom = 20.0
+offset_left = 949.0
+offset_top = -5.0
+offset_right = 1149.0
+offset_bottom = 106.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3ndlx")
+theme_override_font_sizes/font_size = 100
 text = "/100"
 
 [node name="enemy_hp_label" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 113.667
-offset_top = -3.16667
-offset_right = 153.667
-offset_bottom = 19.8333
+offset_left = 801.0
+offset_top = -4.33333
+offset_right = 951.0
+offset_bottom = 106.667
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3ndlx")
+theme_override_font_sizes/font_size = 100
 text = "100"
 horizontal_alignment = 2
