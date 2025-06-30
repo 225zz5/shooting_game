@@ -22,11 +22,8 @@ offset_top = 8.0
 offset_right = -2.0
 offset_bottom = 8.0
 
-[node name="player" parent="." instance=ExtResource("2_c651c")]
-position = Vector2(586, 602)
-
 [node name="background" parent="." instance=ExtResource("1_xwkvk")]
-z_index = -1
+z_index = -2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -39,7 +36,11 @@ position = Vector2(558, 335)
 rotation = 3.13449
 shape = SubResource("SegmentShape2D_hf4mc")
 
+[node name="exposion" parent="." instance=ExtResource("5_3wy1v")]
+z_index = -1
+
+[node name="player" parent="." instance=ExtResource("2_c651c")]
+position = Vector2(586, 602)
+
 [node name="enemy" parent="." instance=ExtResource("3_3wy1v")]
 position = Vector2(560, 60)
-
-[node name="exposion" parent="." instance=ExtResource("5_3wy1v")]

@@ -1,7 +1,6 @@
 extends Node
-
-@onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
-@onready var enemy: Node2D = get_tree().get_first_node_in_group("enemy")
+@onready var player: CharacterBody2D = $"../player"
+@onready var enemy: Node2D = $"../enemy"
 @onready var explosion_enemy: Sprite2D = $explosion_enemy
 @onready var explosion_player: Sprite2D = $explosion_player
 const MIN_EXPLOSION: Vector2 = Vector2(0, 0)

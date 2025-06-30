@@ -12,6 +12,8 @@ var start_position: float = 0.0
 var direction: int = 1 #向きを決める
 var attackmotion: int = 9
 var hitmotion: bool = false
+var hit_thresholds :Array[float] = [75, 50, 25]
+var prev_enemy_hp :int = 100
 const  SPEED_LIST: Array[float] = [150,160,170,180,190,200,210,220,230,240,250] # 速度パターン
 const  ATTACK_LIST: Array[float] = [5,10,7] #攻撃間隔
 const BULLET_SCENE :PackedScene = preload("res://bullet_enemy/bullet_enemy.tscn")
@@ -31,9 +33,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		shoot()
 	
 
-
 func _process(delta: float) -> void:
-	
 	# 移動処理
 	position.x += speed * direction * delta
 	# 範囲外なら方向反転
@@ -46,17 +46,15 @@ func _on_timer_speed_timeout() -> void:
 	var random_speed: float = SPEED_LIST.pick_random()
 	speed = random_speed
 
-
 func _on_timer_attack_timeout() -> void:
 	$AnimatedSprite2D.stop()
 	speed = 0
 	$AnimatedSprite2D.play("attack")
 	$Timer_attack.stop()
 
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	print("アニメ終わり")
-	#	attackするときは止まるように　
+		#attackするときは止まるように　
 	if $AnimatedSprite2D.animation == "attack":
 		print("attack終わり")
 		$AnimatedSprite2D.play("run")
@@ -69,7 +67,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "hit":
 		$Timer_attack.start()
 		$AnimatedSprite2D.play("run")
-
 
 func shoot():
 	print("弾")
@@ -95,17 +92,19 @@ func onshot():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet_player"):
 		print("グループ化")
-		damege()
+		damage()
 		area.get_parent().queue_free() 
 
 
-func damege():
-	const  HP_DAMEAG: Array[float] = [1,2,3,4,5,6,7,8,9,10] # 受けるダメージ
-	var hp_damege :int = HP_DAMEAG.pick_random()
-	var hit_hp50 :int = 50
-	global.enemy_hp -= hp_damege
-	#hpが50より下になったらヒットモーション
-	if global.enemy_hp <= hit_hp50 and hitmotion == false:
-		$AnimatedSprite2D.play("hit")
-		$Timer_attack.stop()
-		hitmotion = true
+
+func damage():
+	const HP_DAMAGE: Array[float] = [1,2,3,4,5,6,7,8,9,10]
+	var hp_damage : int = HP_DAMAGE.pick_random()
+	global.enemy_hp -= hp_damage
+
+	for threshold in hit_thresholds:
+		if prev_enemy_hp > threshold and global.enemy_hp <= threshold:
+			$AnimatedSprite2D.play("hit")
+			$Timer_attack.stop()
+
+	prev_enemy_hp = global.enemy_hp
