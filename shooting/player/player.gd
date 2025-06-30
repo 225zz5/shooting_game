@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 const SPEED :float = 300.0
 const BULLET_SCENE :PackedScene = preload("res://bullet/bullet.tscn")
+const ACCELERATION :float = 20.0	# 加速度
+const FRICTION :float = 0.12		# 摩擦
 @onready var time_shot :Timer = $Timer_shot
 
 func _ready():
 	add_to_group("player")
-
-
 
 #playerの座標管理
 func _physics_process(delta):
@@ -18,7 +18,13 @@ func _physics_process(delta):
 		input_velocity.x += 1
 
 	#playerを実際に動かす処理
-	velocity = input_velocity * SPEED
+	if input_velocity != Vector2.ZERO:
+		# 滑らかに加速
+		velocity = velocity.lerp(input_velocity.normalized() * SPEED, ACCELERATION * delta)
+	else:
+		# 滑らかに減速・停止
+		velocity = velocity.lerp(Vector2.ZERO, FRICTION)
+	
 	move_and_slide()
 
 	#0.5秒おきに弾が出る処理
