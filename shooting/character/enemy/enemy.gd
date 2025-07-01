@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var timer_speed: Timer = $Timer_speed
 @onready var timer_attack: Timer = $Timer_attack
-@onready var time_onshot: Timer = $Timer_onshot
+@onready var timer_onshot: Timer = $Timer_onshot
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 
@@ -29,14 +29,14 @@ const BULLET_LOW: PackedScene = preload("res://attack/bullet_enemy/low/bullet_en
 func _ready() -> void:
 	add_to_group("enemy")
 	sprite.flip_h = not sprite.flip_h
-	$AnimatedSprite2D.play("run")
+	sprite.play("run")
 	start_position = position.x   #  初期位置を保存
-	$Timer_speed.start()
-	$Timer_attack.start()
-	$Timer_onshot.start()
+	timer_speed.start()
+	timer_attack.start()
+	timer_onshot.start()
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.frame == attackmotion:
+	if sprite.animation == "attack" and sprite.frame == attackmotion:
 		shoot()
 	
 
@@ -54,29 +54,26 @@ func _on_timer_speed_timeout() -> void:
 	speed = random_speed
 
 func _on_timer_attack_timeout() -> void:
-	$AnimatedSprite2D.stop()
+	sprite.stop()
 	speed = 0
-	$AnimatedSprite2D.play("attack")
-	$Timer_attack.stop()
+	sprite.play("attack")
+	timer_attack.stop()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	print("アニメ終わり")
 		#attackするときは止まるように　
-	if $AnimatedSprite2D.animation == "attack":
-		print("attack終わり")
-		$AnimatedSprite2D.play("run")
+	if sprite.animation == "attack":
+		sprite.play("run")
 		var random_speed: float = SPEED_LIST.pick_random()
 		speed = random_speed
 		var attack_list: float = ATTACK_LIST.pick_random()
-		$Timer_attack.wait_time = attack_list
-		$Timer_attack.start()
+		timer_attack.wait_time = attack_list
+		timer_attack.start()
 		#ヒットモーション終わったらの処理
-	if $AnimatedSprite2D.animation == "hit":
-		$Timer_attack.start()
-		$AnimatedSprite2D.play("run")
+	if sprite.animation == "hit":
+		timer_attack.start()
+		sprite.play("run")
 
 func shoot():
-	print("弾")
 	var bullet = BULLET_HIGH.instantiate()
 	bullet.global_position = global_position + Vector2(0.0, 30.0)
 	# 撃った瞬間のplayer座標を取得して方向計算
@@ -88,7 +85,7 @@ func _on_timer_onshot_timeout() -> void:
 	onshot()
 
 func onshot():
-	$Timer_onshot.start()
+	timer_onshot.start()
 	var bullet2 = BULLET_LOW.instantiate()
 	bullet2.global_position = global_position + Vector2(0.0, 30.0)
 	# 撃った瞬間のplayer座標を取得して方向計算
@@ -98,20 +95,17 @@ func onshot():
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet_player"):
-		print("グループ化")
 		damage()
 		area.get_parent().queue_free() 
-
-
 
 func damage():
 	const HP_DAMAGE: Array[float] = [1,2,3,4,5,6,7,8,9,10]
 	var hp_damage : int = HP_DAMAGE.pick_random()
 	global.enemy_hp -= hp_damage
-
+	
 	for threshold in hit_thresholds:
 		if prev_enemy_hp > threshold and global.enemy_hp <= threshold:
-			$AnimatedSprite2D.play("hit")
-			$Timer_attack.stop()
-
+			sprite.play("hit")
+			timer_attack.stop()
+	
 	prev_enemy_hp = global.enemy_hp

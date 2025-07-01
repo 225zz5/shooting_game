@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bssrj4mm6j68m"]
 
-[ext_resource type="Script" uid="uid://kslqk38isxjb" path="res://hp/hp.gd" id="1_rnpu1"]
+[ext_resource type="Script" uid="uid://kslqk38isxjb" path="res://object/hp/hp.gd" id="1_rnpu1"]
 [ext_resource type="Texture2D" uid="uid://lhcjjk37c5ka" path="res://asset/Frame_hp.png" id="2_3ndlx"]
 [ext_resource type="Texture2D" uid="uid://ccop27n2j0c55" path="res://asset/hp.png" id="3_n27cb"]
 [ext_resource type="FontFile" uid="uid://dpnx60ksmqggt" path="res://asset/Nosutaru-dotMPlusH-10-Regular.ttf" id="4_3ndlx"]
@@ -22,6 +22,8 @@ texture_over = ExtResource("3_n27cb")
 texture_progress = ExtResource("2_3ndlx")
 
 [node name="player" type="Label" parent="."]
+visible = false
+texture_filter = 1
 layout_mode = 0
 offset_left = 167.667
 offset_top = 471.0
@@ -29,10 +31,11 @@ offset_right = 367.667
 offset_bottom = 582.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3ndlx")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 84
 text = "/100"
 
 [node name="player_hp_label" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 4.0
 offset_top = 470.0
@@ -40,7 +43,7 @@ offset_right = 154.0
 offset_bottom = 581.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3ndlx")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 84
 text = "100"
 horizontal_alignment = 2
 
@@ -56,6 +59,7 @@ texture_over = ExtResource("3_n27cb")
 texture_progress = ExtResource("2_3ndlx")
 
 [node name="enemy" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 949.0
 offset_top = -5.0
@@ -63,7 +67,7 @@ offset_right = 1149.0
 offset_bottom = 106.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3ndlx")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 84
 text = "/100"
 
 [node name="enemy_hp_label" type="Label" parent="."]
@@ -75,6 +79,6 @@ offset_right = 951.0
 offset_bottom = 106.667
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3ndlx")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 84
 text = "100"
 horizontal_alignment = 2

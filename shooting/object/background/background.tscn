@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://mtjelje7sbfq"]
 
 [ext_resource type="Texture2D" uid="uid://dvfdpf6pyawya" path="res://asset/background_normal.jpg" id="1_p8qmt"]
-[ext_resource type="Script" uid="uid://8qry3jyh8lxs" path="res://background/background.gd" id="1_r0sni"]
+[ext_resource type="Script" uid="uid://8qry3jyh8lxs" path="res://object/background/background.gd" id="1_r0sni"]
 [ext_resource type="Texture2D" uid="uid://5y1jhxbssm03" path="res://asset/jigoku.jpg" id="2_eva80"]
 [ext_resource type="Texture2D" uid="uid://ds3bo4apyyfk6" path="res://asset/tenngoku.jpg" id="4_qjy44"]
 [ext_resource type="FontFile" uid="uid://dpnx60ksmqggt" path="res://asset/Nosutaru-dotMPlusH-10-Regular.ttf" id="5_gsnt7"]

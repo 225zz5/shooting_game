@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 	_update_bars()
 
 func _update_bars() -> void:
-	player_hp_label.text = str(max(global.player_hp, MIN_HP))
+	player_hp_label.text = str(max(global.player_hp, MIN_HP)) + "/103r3232r3r20"
 	player_hp_bar.value = max(global.player_hp, MIN_HP)
-	enemy_hp_label.text = str(max(global.enemy_hp, MIN_HP))
+	enemy_hp_label.text = str(max(global.enemy_hp, MIN_HP)) 
 	enemy_hp_bar.value = max(global.enemy_hp, MIN_HP)

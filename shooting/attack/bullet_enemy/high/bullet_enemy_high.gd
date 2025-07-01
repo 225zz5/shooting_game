@@ -9,5 +9,6 @@ func _process(delta):
 func _ready():
 	$Timer.start()
 	add_to_group("bullet_enemy")
+
 func _on_timer_timeout() -> void:
 	queue_free()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://bk1krcg65nvim"]
 
 [ext_resource type="Texture2D" uid="uid://bhry7lt55y5ay" path="res://asset/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="1_2mvqj"]
-[ext_resource type="Script" uid="uid://bbnqyqa5ycvsd" path="res://enemy/enemy.gd" id="1_ofsxj"]
+[ext_resource type="Script" uid="uid://bbnqyqa5ycvsd" path="res://character/enemy/enemy.gd" id="1_ofsxj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofsxj"]
 atlas = ExtResource("1_2mvqj")
