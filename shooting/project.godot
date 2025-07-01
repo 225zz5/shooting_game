@@ -14,10 +14,15 @@ config/name="shooting"
 run/main_scene="uid://d3dnpyd72jfq6"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://cvn2bchm443al"
 
 [autoload]
 
 global="*res://global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 

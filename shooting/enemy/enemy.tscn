@@ -296,6 +296,7 @@ animations = [{
 radius = 65.0077
 
 [node name="Node2D" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_ofsxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

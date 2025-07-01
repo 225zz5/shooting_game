@@ -13,6 +13,7 @@ size = Vector2(93, 90)
 script = ExtResource("1_7mixf")
 
 [node name="Zero" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("2_nevrd")
 

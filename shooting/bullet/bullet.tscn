@@ -7,6 +7,7 @@
 radius = 26.0192
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_6wip1")
 
 [node name="bullet" type="Sprite2D" parent="."]
