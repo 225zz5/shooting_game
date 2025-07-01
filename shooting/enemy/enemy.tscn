@@ -326,4 +326,3 @@ shape = SubResource("CircleShape2D_ofsxj")
 [connection signal="timeout" from="Timer_attack" to="." method="_on_timer_attack_timeout"]
 [connection signal="timeout" from="Timer_onshot" to="." method="_on_timer_onshot_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

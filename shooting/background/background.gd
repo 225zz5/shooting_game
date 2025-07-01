@@ -15,7 +15,7 @@ func hide_all():
 func _ready() -> void:
 	hide_all()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not result_shown:
 		if global.enemy_hp <= MIN_HP:
 			normal.visible = false

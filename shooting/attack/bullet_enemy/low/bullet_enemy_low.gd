@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED: int = 400.0
+const SPEED: float = 300.0
 var direction: Vector2
 
 func _process(delta):
@@ -8,6 +8,6 @@ func _process(delta):
 
 func _ready():
 	$Timer.start()
-	add_to_group("bullet_enemy")
+	add_to_group("bullet_enemy_onshot")
 func _on_timer_timeout() -> void:
 	queue_free()

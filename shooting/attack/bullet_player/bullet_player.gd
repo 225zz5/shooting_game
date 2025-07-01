@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED :int = 400
 const rotation_bullt :int = 5
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	rotation += deg_to_rad(rotation_bullt)
 	velocity = Vector2(0, -SPEED)	# 上に進むように

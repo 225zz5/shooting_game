@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4vmqfqy3i006"]
 
-[ext_resource type="Script" uid="uid://l5g5kr0foisj" path="res://bullet_enemy/bullet_enemy.gd" id="1_jpyru"]
-[ext_resource type="Texture2D" uid="uid://qaajld7y7h5a" path="res://asset/enemy_tama.png" id="2_5bt2i"]
+[ext_resource type="Script" uid="uid://l5g5kr0foisj" path="res://attack/bullet_enemy/high/bullet_enemy_high.gd" id="1_mx8v7"]
+[ext_resource type="Texture2D" uid="uid://qaajld7y7h5a" path="res://asset/enemy_tama.png" id="2_sa5xh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bt2i"]
 radius = 27.8568
@@ -10,21 +10,21 @@ radius = 27.8568
 radius = 30.2655
 
 [node name="Area2D" type="Area2D"]
-script = ExtResource("1_jpyru")
+script = ExtResource("1_mx8v7")
 
 [node name="enemy_bullet" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("2_5bt2i")
+texture = ExtResource("2_sa5xh")
 
 [node name="enemy_bullet2" type="Sprite2D" parent="."]
 position = Vector2(-150, 67)
 scale = Vector2(2, 2)
-texture = ExtResource("2_5bt2i")
+texture = ExtResource("2_sa5xh")
 
 [node name="enemy_bullet3" type="Sprite2D" parent="."]
 position = Vector2(150, 67)
 scale = Vector2(2, 2)
-texture = ExtResource("2_5bt2i")
+texture = ExtResource("2_sa5xh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5bt2i")

@@ -1,23 +1,28 @@
 extends Node
+
 @onready var player: CharacterBody2D = $"../player"
 @onready var enemy: Node2D = $"../enemy"
 @onready var explosion_enemy: Sprite2D = $explosion_enemy
 @onready var explosion_player: Sprite2D = $explosion_player
-const MIN_EXPLOSION: Vector2 = Vector2(0, 0)
-const MIN_HP: int = 0
+
 var judgment: bool = false
-var explosion_target: Node2D = null	# 追尾対象
+var explosion_target: Node2D = null # 追尾対象
 var is_exploding: bool = false
 
-func _ready() -> void:
-	explosion_enemy.scale = MIN_EXPLOSION
-	explosion_player.scale = MIN_EXPLOSION
-	explosion_enemy.visible = false
-	explosion_player.visible = false
-	explosion_enemy.process_mode = Node.PROCESS_MODE_ALWAYS
-	explosion_player.process_mode = Node.PROCESS_MODE_ALWAYS
+const MIN_EXPLOSION: Vector2 = Vector2(0, 0)
+const MIN_HP: int = 0
 
-func _process(delta: float) -> void:
+func _ready() -> void:
+	_reset_character(explosion_enemy)
+	_reset_character(explosion_player)
+
+func _reset_character(exp_name):
+	exp_name.scale = MIN_EXPLOSION
+	exp_name.visible = false
+	exp_name.process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+func _process(_delta: float) -> void:
 	# 爆発中の追尾処理
 	if is_exploding and explosion_target != null:
 		if explosion_enemy.visible:
@@ -27,23 +32,19 @@ func _process(delta: float) -> void:
 
 	# 敵が死んだ場合
 	if global.enemy_hp <= MIN_HP and not judgment:
-		explosion_target = enemy	# 追尾対象設定
-		is_exploding = true
-		explosion_enemy.global_position = enemy.global_position
-		explosion_enemy.visible = true
-		var tween = create_tween()
-		tween.tween_property(explosion_enemy, "scale", Vector2.ONE, 1.0)
-		tween.connect("finished", Callable(self, "_on_explosion_finished"))
-		judgment = true
+		_dead_character(explosion_enemy, enemy)
 
 	# プレイヤーが死んだ場合
 	if global.player_hp <= MIN_HP and not judgment:
-		explosion_target = player	# 追尾対象設定
+		_dead_character(explosion_player, player)
+
+func _dead_character(exp_name, chara_name):
+		explosion_target = chara_name	# 追尾対象設定
 		is_exploding = true
-		explosion_player.global_position = player.global_position
-		explosion_player.visible = true
+		exp_name.global_position = chara_name.global_position
+		exp_name.visible = true
 		var tween = create_tween()
-		tween.tween_property(explosion_player, "scale", Vector2.ONE, 1.0)
+		tween.tween_property(exp_name, "scale", Vector2.ONE, 1.0)
 		tween.connect("finished", Callable(self, "_on_explosion_finished"))
 		judgment = true
 
